@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AngularJS</title>
+<script src="angular.js"></script>
+<script src="router.js"></script>
+<script type="text/javascript">
+angular.module('ngRouteExample', ['ngRoute'])
+.controller('HomeController', function ($scope, $route) { $scope.$route = $route;})
+.controller('AboutController', function ($scope, $route) { $scope.$route = $route;})
+.config(function ($routeProvider) {
+    $routeProvider.
+    when('/home', {
+        templateUrl: 'aaa/home.jsp',
+        controller: 'HomeController'
+    }).
+    otherwise({
+        redirectTo: '/home'
+    });
+});
+</script>
+ 
+
+</head>
+
+<body ng-app="ngRouteExample" class="ng-scope">
+  <script type="text/ng-template" id="home.jsp">
+      <h1> Home </h1>
+  </script>
+ 
+  <div> 
+    <div id="navigation">  
+      <a href="#!/home">Home</a>
+    </div>
+      
+    <div ng-view="">
+    </div>
+  </div>
+</body>
+</html>
